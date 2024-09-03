@@ -51,7 +51,7 @@ function calculate() {
         resultValue = parseFloat(firstOperand) * parseFloat(secondOperand);
         break;
       case '/':
-        if ((secondOperand = '0')) {
+        if (parseFloat(secondOperand) === 0) {
           resultValue = 'Ошибка';
           firstOperand = '';
           secondOperand = '';
