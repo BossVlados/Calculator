@@ -75,7 +75,7 @@ function calculate() {
         resultValue = '';
     }
     if (typeof resultValue === 'number') {
-      resultValue = resultValue.toFixed(22);
+      resultValue = resultValue.toFixed(16);
     }
 
     updateResultDisplay(resultValue);
