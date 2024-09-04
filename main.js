@@ -37,6 +37,17 @@ function removeLast() {
   }
 }
 
+function updateResultDisplay(value) {
+  result.value = value;
+
+  // Уменьшаем размер текста, если длина результата больше 6 символов
+  if (value.length > 6) {
+    result.style.fontSize = '1.5em'; // Уменьшите размер шрифта по вашему усмотрению
+  } else {
+    result.style.fontSize = '2em'; // Размер шрифта по умолчанию
+  }
+}
+
 function calculate() {
   if (firstOperand !== '' && secondOperand !== '' && currentOperator !== '') {
     let resultValue;
@@ -63,6 +74,11 @@ function calculate() {
       default:
         resultValue = '';
     }
+    if (typeof resultValue === 'number') {
+      resultValue = resultValue.toFixed(22);
+    }
+
+    updateResultDisplay(resultValue);
     result.value = resultValue;
     firstOperand = resultValue.toString();
     secondOperand = '';
