@@ -3,6 +3,7 @@ let currentOperator = '';
 let firstOperand = '';
 let secondOperand = '';
 const operators = ['+', '-', '*', '/', '%'];
+const defaultFontSize = '72px'; // Исходный размер шрифта
 
 function appendToResult(value) {
   if (value === '.' && result.value.includes('.')) {
@@ -16,6 +17,7 @@ function appendToResult(value) {
   }
 
   result.value += value;
+  updateResultDisplay(result.value); // Обновляем размер шрифта при добавлении
 }
 
 function allClear() {
@@ -23,6 +25,9 @@ function allClear() {
   firstOperand = '';
   secondOperand = '';
   currentOperator = '';
+
+  // Возвращаем размер шрифта к исходному значению
+  result.style.fontSize = defaultFontSize;
 }
 
 function removeLast() {
@@ -34,17 +39,17 @@ function removeLast() {
       secondOperand = secondOperand.slice(0, -1);
     }
     result.value = result.value.slice(0, -1);
+    updateResultDisplay(result.value);
   }
 }
 
 function updateResultDisplay(value) {
   result.value = value;
 
-  // Уменьшаем размер текста, если длина результата больше 6 символов
-  if (value.length > 6) {
-    result.style.fontSize = '1.5em'; // Уменьшите размер шрифта по вашему усмотрению
+  if (value.length > 8) {
+    result.style.fontSize = '1.5em';
   } else {
-    result.style.fontSize = '2em'; // Размер шрифта по умолчанию
+    result.style.fontSize = defaultFontSize;
   }
 }
 
@@ -79,7 +84,6 @@ function calculate() {
     }
 
     updateResultDisplay(resultValue);
-    result.value = resultValue;
     firstOperand = resultValue.toString();
     secondOperand = '';
     currentOperator = '';
@@ -90,9 +94,11 @@ function calculatePercentage() {
   if (firstOperand !== '' && currentOperator === '') {
     result.value = parseFloat(firstOperand) / 100;
     firstOperand = result.value.toString();
+    updateResultDisplay(result.value); // Обновляем размер шрифта
   } else if (secondOperand !== '') {
     result.value = parseFloat(secondOperand) / 100;
     secondOperand = result.value.toString();
+    updateResultDisplay(result.value); // Обновляем размер шрифта
   }
 }
 
@@ -127,9 +133,7 @@ document.addEventListener('keydown', function (event) {
     key === '/' ||
     key === '%'
   ) {
-    if (event.type === 'keydown') {
-      appendToResult(key);
-    }
+    appendToResult(key);
   } else if (key === 'Enter' || key === '=') {
     calculate();
   } else if (key === 'Backspace') {
