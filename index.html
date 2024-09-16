@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="calculator">
+        <input class="display" type="text" id="display">
+        <div class="buttons">
+            <input class="button" type="button" value="AC" onclick="allClear()">
+            <input class="button" type="button" value="&lArr;" onclick="removeLast()">
+            <input class="button" type="button" value="%" onclick="calculatePercentage()">
+            <input class="button" type="button" value="/" onclick="setOperator('/')">
+            <input class="button" type="button" value="7" onclick="appendToResult('7')"></input>
+            <input class="button" type="button" value="8" onclick="appendToResult('8')"></input>
+            <input class="button" type="button" value="9" onclick="appendToResult('9')"></input>
+            <input class="button" type="button" value="*" onclick="setOperator('*')">
+            <input class="button" type="button" value="4" onclick="appendToResult('4')"></input>
+            <input class="button" type="button" value="5" onclick="appendToResult('5')"></input>
+            <input class="button" type="button" value="6" onclick="appendToResult('6')"></input>
+            <input class="button" type="button" value="-" onclick="setOperator('-')">
+            <input class="button" type="button" value="1" onclick="appendToResult('1')"></input>
+            <input class="button" type="button" value="2" onclick="appendToResult('2')"></input>
+            <input class="button" type="button" value="3" onclick="appendToResult('3')"></input>
+            <input class="button" type="button" value="+" onclick="setOperator('+')">
+            <input class="button" type="button" value="0" onclick="appendToResult('0')"></input>
+            <input class="button" type="button" value="." onclick="appendToResult('.')">
+            <input class="button equal" type="button" value="=" onclick="calculate()">
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
